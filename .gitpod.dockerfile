@@ -10,7 +10,7 @@ RUN wget -q -O - https://dl-ssl.google.com/linux/linux_signing_key.pub | sudo ap
 # Install custom tools, runtime, etc.
 RUN sudo add-apt-repository -y ppa:neovim-ppa/unstable
 RUN sudo apt-get update && \
-    sudo apt-get install -y zsh neovim mlocate
+    sudo apt-get install -y zsh neovim nvm mlocate
 
 # Install nvm
 RUN bash -c ". .nvm/nvm.sh \
@@ -24,5 +24,5 @@ ENV ZSH_THEME cloud
 SHELL ["/bin/bash", "-o", "pipefail", "-c"]
 RUN npm i npm -g
 RUN npm i @angular/cli -g
-RUN updatedb
+RUN sudo updatedb
 RUN wget https://github.com/robbyrussell/oh-my-zsh/raw/master/tools/install.sh -O - | zsh
